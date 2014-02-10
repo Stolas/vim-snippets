@@ -1,14 +1,7 @@
 ## Main
 # main
 snippet main
-	int main(int argc, const char *argv[])
-	{
-		${0}
-		return 0;
-	}
-# main(void)
-snippet mainn
-	int main(void)
+	int main(int argc, const char **argv)
 	{
 		${0}
 		return 0;
@@ -25,7 +18,7 @@ snippet Inc
 snippet ndef
 	#ifndef $1
 	#define ${1:SYMBOL} ${2:value}
-	#endif
+	#endif /* $1 */
 # define
 snippet def
 	#define
@@ -33,12 +26,12 @@ snippet def
 snippet ifdef
 	#ifdef ${1:FOO}
 		${2:#define }
-	#endif
+	#endif /* $1 */
 # if
 snippet #if
 	#if ${1:FOO}
 		${0}
-	#endif
+	#endif /* $1 */
 # header include guard
 snippet once
 	#ifndef ${1:`toupper(vim_snippets#Filename('$1_H', 'UNTITLED_H'))`}
